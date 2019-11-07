@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Carousel JS</h1>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="./css/style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Carousel JS</h1>
+		<div class="carousel">
+			<button class="btn btn__prev carousel--btn"><img src="" alt="" /></button>
+			<button class="btn btn__next carousel--btn"><img src="" alt="" /></button>
 
-    <script src="./js/carousel.js"></script>
-</body>
+			<div class="carousel--container">
+				<ul class="carousel--items">
+					<li class="carousel--item active">
+						<img src="./media/images/FX450_OPL_XCntrlPlus_Front.jpeg" alt="Picture of FX range" />
+					</li>
+					<li class="carousel--item">
+						<img src="./media/images/FX450_OPL_XCntrlPlus_Left.jpeg" alt="Picture of FX range" />
+					</li>
+					<li class="carousel--item">
+						<img src="./media/images/FX450_OPL_XCntrlPlus_Right.jpeg" alt="Picture of FX range" />
+					</li>
+				</ul>
+			</div>
+
+			<div class="carousel--navigation">
+				<div class="carusel--dot active"></div>
+				<div class="carusel--dot"></div>
+				<div class="carusel--dot"></div>
+			</div>
+		</div>
+		<script src="./js/carousel.js"></script>
+	</body>
 </html>
