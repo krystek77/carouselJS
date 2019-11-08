@@ -10,7 +10,7 @@ const nextButton = document.querySelector('.carousel--btn__next');
 const prevButton = document.querySelector('.carousel--btn__prev');
 
 const navigation = document.querySelector('.carousel--navigation');
-
+const dots = [...navigation.children];
 /**
  * Set the position of each slide
  *
@@ -36,6 +36,10 @@ function moveSlide(carousel, currentSlide, targetSlide) {
 	const position = targetSlide.style.left;
 	carousel.style.transform = `translateX(-${position})`;
 	toggleActive(currentSlide, targetSlide);
+    const index = findIndex(targetSlide, slides);
+    const targetDot = dots[index];
+    const currentDot = navigation.querySelector('.active');
+    toggleActive(currentDot,targetDot);
 }
 
 /**
@@ -96,8 +100,6 @@ prevButton.addEventListener('click', function() {
 	hideButton(targetSlide, slides);
 	moveSlide(carousel, currentSlide, targetSlide);
 });
-
-const dots = [...navigation.children];
 
 navigation.addEventListener('click', function(event) {
 	if (event.target === navigation) return;
