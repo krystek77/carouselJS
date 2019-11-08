@@ -101,11 +101,12 @@ const dots = [...navigation.children];
 
 navigation.addEventListener('click', function(event) {
 	if (event.target === navigation) return;
-	const dot = event.target;
-	const index = findIndex(dot, dots);
+	const targetDot = event.target;
+	const index = findIndex(targetDot, dots);
 	const currentSlide = carousel.querySelector('.active');
 	const targetSlide = slides[index];
+	const currentDot = navigation.querySelector('.active');
 	hideButton(targetSlide, slides);
 	moveSlide(carousel, currentSlide, targetSlide);
+	toggleActive(currentDot, targetDot);
 });
-
