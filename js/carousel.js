@@ -27,19 +27,19 @@ positionSlides(slides, slideWidth);
 
 nextButton.addEventListener('click', function() {
 	const currentSlide = carousel.querySelector('.active');
-	const nextSlide = currentSlide.nextElementSibling;
-	const position = nextSlide.style.left;
-	carousel.style.transform = `translateX(-${position})`;
-	// carousel.style.transform = 'translateX(-' + position + ')';
-	currentSlide.classList.remove('active');
-	nextSlide.classList.add('active');
+	const targetSlide = currentSlide.nextElementSibling;
+    moveSlide(carousel, currentSlide, targetSlide);
 });
 
 prevButton.addEventListener('click', function() {
 	const currentSlide = carousel.querySelector('.active');
-	const prevSlide = currentSlide.previousElementSibling;
-	const position = prevSlide.style.left;
+	const targetSlide = currentSlide.previousElementSibling;
+	moveSlide(carousel, currentSlide, targetSlide);
+});
+
+function moveSlide(carousel, currentSlide, targetSlide) {
+	const position = targetSlide.style.left;
 	carousel.style.transform = `translateX(-${position})`;
 	currentSlide.classList.remove('active');
-	prevSlide.classList.add('active');
-});
+	targetSlide.classList.add('active');
+}
