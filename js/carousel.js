@@ -11,6 +11,10 @@ const prevButton = document.querySelector('.carousel--btn__prev');
 
 const navigation = document.querySelector('.carousel--navigation');
 const dots = [...navigation.children];
+
+const INTERVAL_TIME = 5000;
+let dir = 'TO_RIGHT';
+
 /**
  * Set the position of each slide
  *
@@ -36,10 +40,10 @@ function moveSlide(carousel, currentSlide, targetSlide) {
 	const position = targetSlide.style.left;
 	carousel.style.transform = `translateX(-${position})`;
 	toggleActive(currentSlide, targetSlide);
-    const index = findIndex(targetSlide, slides);
-    const targetDot = dots[index];
-    const currentDot = navigation.querySelector('.active');
-    toggleActive(currentDot,targetDot);
+	const index = findIndex(targetSlide, slides);
+	const targetDot = dots[index];
+	const currentDot = navigation.querySelector('.active');
+	toggleActive(currentDot, targetDot);
 }
 
 /**
@@ -112,3 +116,27 @@ navigation.addEventListener('click', function(event) {
 	moveSlide(carousel, currentSlide, targetSlide);
 	toggleActive(currentDot, targetDot);
 });
+
+const time = setInterval(function() {
+	const currentSlide = carousel.querySelector('.active');
+	const currentIndex = findIndex(currentSlide, slides);
+	let targetSlide = null;
+
+	if (currentIndex === slides.length - 1) {
+		dir = 'TO_RIGHT';
+		targetSlide = currentSlide.previousElementSibling;
+		moveSlide(carousel, currentSlide, targetSlide);
+	} else if (currentIndex === 0) {
+		dir = 'TO_LEFT';
+		targetSlide = currentSlide.nextElementSibling;
+		moveSlide(carousel, currentSlide, targetSlide);
+	} else {
+		if (dir === 'TO_LEFT') {
+			targetSlide = currentSlide.nextElementSibling;
+			moveSlide(carousel, currentSlide, targetSlide);
+		} else if (dir === 'TO_RIGHT') {
+			targetSlide = currentSlide.previousElementSibling;
+			moveSlide(carousel, currentSlide, targetSlide);
+		}
+	}
+}, INTERVAL_TIME);
