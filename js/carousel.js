@@ -1,5 +1,4 @@
 const carousel = document.querySelector('.carousel--items');
-
 const carouselItems = carousel.children;
 /**
  * Convert from HTMLCollection to table
@@ -34,4 +33,13 @@ nextButton.addEventListener('click', function() {
 	// carousel.style.transform = 'translateX(-' + position + ')';
 	currentSlide.classList.remove('active');
 	nextSlide.classList.add('active');
+});
+
+prevButton.addEventListener('click', function() {
+	const currentSlide = carousel.querySelector('.active');
+	const prevSlide = currentSlide.previousElementSibling;
+	const position = prevSlide.style.left;
+	carousel.style.transform = `translateX(-${position})`;
+	currentSlide.classList.remove('active');
+	prevSlide.classList.add('active');
 });
