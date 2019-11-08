@@ -23,6 +23,7 @@ body {
 	&--container {
 		width: 100%;
 		height: 400px;
+		overflow: hidden;
 	}
 	&--items {
 		padding-left: 0;
