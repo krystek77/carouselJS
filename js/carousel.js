@@ -13,8 +13,11 @@ const navigation = document.querySelector('.carousel--navigation');
 const dots = [...navigation.children];
 
 const INTERVAL_TIME = 5000;
-let dir = 'TO_RIGHT';
+
 let time = 0;
+
+const DIRECTION = Object.freeze({ TO_RIGHT: 1, TO_LEFT: 2 });
+let dir = DIRECTION.TO_RIGHT;
 
 /**
  * Set the position of each slide
@@ -131,21 +134,21 @@ function autoMoveSlide() {
 	let targetSlide = null;
 
 	if (currentIndex === slides.length - 1) {
-		dir = 'TO_RIGHT';
+		dir = DIRECTION.TO_RIGHT;
 		targetSlide = currentSlide.previousElementSibling;
 		hideButton(targetSlide, slides);
 		moveSlide(carousel, currentSlide, targetSlide);
 	} else if (currentIndex === 0) {
-		dir = 'TO_LEFT';
+		dir = DIRECTION.TO_LEFT;
 		targetSlide = currentSlide.nextElementSibling;
 		hideButton(targetSlide, slides);
 		moveSlide(carousel, currentSlide, targetSlide);
 	} else {
-		if (dir === 'TO_LEFT') {
+		if (dir === DIRECTION.TO_LEFT) {
 			targetSlide = currentSlide.nextElementSibling;
 			hideButton(targetSlide, slides);
 			moveSlide(carousel, currentSlide, targetSlide);
-		} else if (dir === 'TO_RIGHT') {
+		} else if (dir === DIRECTION.TO_RIGHT) {
 			targetSlide = currentSlide.previousElementSibling;
 			hideButton(targetSlide, slides);
 			moveSlide(carousel, currentSlide, targetSlide);
