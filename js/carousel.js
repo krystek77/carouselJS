@@ -67,7 +67,6 @@ function hideButton(targetSlide, slides) {
 }
 
 positionSlides(slides, slideWidth);
-prevButton.classList.add('hide');
 
 nextButton.addEventListener('click', function() {
 	const currentSlide = carousel.querySelector('.active');
