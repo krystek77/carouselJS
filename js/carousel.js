@@ -23,12 +23,36 @@ function positionSlides(slides, slideWidth) {
 	}
 }
 
+/**
+ * Move slide
+ *
+ * @param {HTMLElement} carousel
+ * @param {HTMLElement} currentSlide
+ * @param {HTMLElement} targetSlide
+ */
+function moveSlide(carousel, currentSlide, targetSlide) {
+	const position = targetSlide.style.left;
+	carousel.style.transform = `translateX(-${position})`;
+	toggleActive(currentSlide, targetSlide);
+}
+
+/**
+ * Toggle class active between 2 elements
+ *
+ * @param {HTMLElement} currentSlide
+ * @param {HTMLElement} targetSlide
+ */
+function toggleActive(currentSlide, targetSlide) {
+	currentSlide.classList.remove('active');
+	targetSlide.classList.add('active');
+}
+
 positionSlides(slides, slideWidth);
 
 nextButton.addEventListener('click', function() {
 	const currentSlide = carousel.querySelector('.active');
 	const targetSlide = currentSlide.nextElementSibling;
-    moveSlide(carousel, currentSlide, targetSlide);
+	moveSlide(carousel, currentSlide, targetSlide);
 });
 
 prevButton.addEventListener('click', function() {
@@ -36,10 +60,3 @@ prevButton.addEventListener('click', function() {
 	const targetSlide = currentSlide.previousElementSibling;
 	moveSlide(carousel, currentSlide, targetSlide);
 });
-
-function moveSlide(carousel, currentSlide, targetSlide) {
-	const position = targetSlide.style.left;
-	carousel.style.transform = `translateX(-${position})`;
-	currentSlide.classList.remove('active');
-	targetSlide.classList.add('active');
-}
