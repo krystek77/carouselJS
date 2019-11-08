@@ -9,6 +9,8 @@ const slideWidth = slides[0].getBoundingClientRect().width;
 const nextButton = document.querySelector('.carousel--btn__next');
 const prevButton = document.querySelector('.carousel--btn__prev');
 
+const navigation = document.querySelector('.carousel--navigation');
+
 /**
  * Set the position of each slide
  *
