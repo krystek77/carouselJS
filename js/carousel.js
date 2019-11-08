@@ -83,3 +83,20 @@ prevButton.addEventListener('click', function() {
 	hideButton(targetSlide, slides);
 	moveSlide(carousel, currentSlide, targetSlide);
 });
+
+const dots = [...navigation.children];
+
+navigation.addEventListener('click', function(event) {
+	if (event.target === navigation) return;
+	const dot = event.target;
+	let index = 0;
+	let targetSlide = null;
+	const currentSlide = carousel.querySelector('.active');
+	for (let index = 0; index < dots.length; index++) {
+		if (dot === dots[index]) {
+			targetSlide = slides[index];
+		}
+	}
+	hideButton(targetSlide, slides);
+	moveSlide(carousel, currentSlide, targetSlide);
+});
