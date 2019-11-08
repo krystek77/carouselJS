@@ -68,6 +68,19 @@ function hideButton(targetSlide, slides) {
 	}
 }
 
+/**
+ * Finds index of element that is event target
+ *
+ * @param {HTMLElement} item
+ * @param {HTMLElement[]} items
+ * @returns {number} index
+ */
+function findIndex(item, items) {
+	for (let index = 0; index < items.length; index++) {
+		if (item === items[index]) return index;
+	}
+}
+
 positionSlides(slides, slideWidth);
 
 nextButton.addEventListener('click', function() {
@@ -89,14 +102,10 @@ const dots = [...navigation.children];
 navigation.addEventListener('click', function(event) {
 	if (event.target === navigation) return;
 	const dot = event.target;
-	let index = 0;
-	let targetSlide = null;
+	const index = findIndex(dot, dots);
 	const currentSlide = carousel.querySelector('.active');
-	for (let index = 0; index < dots.length; index++) {
-		if (dot === dots[index]) {
-			targetSlide = slides[index];
-		}
-	}
+	const targetSlide = slides[index];
 	hideButton(targetSlide, slides);
 	moveSlide(carousel, currentSlide, targetSlide);
 });
+
