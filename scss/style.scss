@@ -33,7 +33,6 @@ body {
 		position: relative;
 		height: 100%;
 		transition: transform 0.3s ease-in-out;
-		
 	}
 	&--item {
 		position: absolute;
@@ -80,6 +79,7 @@ body {
 		border-radius: 50%;
 		margin: 10px;
 		cursor: pointer;
+		transition: background-color 0.3s ease-in-out;
 	}
 	&--dot.active {
 		background-color: lighten($color: #000000, $amount: 10);
