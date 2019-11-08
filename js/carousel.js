@@ -91,22 +91,28 @@ function findIndex(item, items) {
 }
 
 positionSlides(slides, slideWidth);
+time = setInterval(autoMoveSlide, INTERVAL_TIME);
 
 nextButton.addEventListener('click', function() {
+	clearInterval(time);
 	const currentSlide = carousel.querySelector('.active');
 	const targetSlide = currentSlide.nextElementSibling;
 	hideButton(targetSlide, slides);
 	moveSlide(carousel, currentSlide, targetSlide);
+	time = setInterval(autoMoveSlide, INTERVAL_TIME);
 });
 
 prevButton.addEventListener('click', function() {
+	clearInterval(time);
 	const currentSlide = carousel.querySelector('.active');
 	const targetSlide = currentSlide.previousElementSibling;
 	hideButton(targetSlide, slides);
 	moveSlide(carousel, currentSlide, targetSlide);
+	time = setInterval(autoMoveSlide, INTERVAL_TIME);
 });
 
 navigation.addEventListener('click', function(event) {
+	clearInterval(time);
 	if (event.target === navigation) return;
 	const targetDot = event.target;
 	const index = findIndex(targetDot, dots);
@@ -116,11 +122,10 @@ navigation.addEventListener('click', function(event) {
 	hideButton(targetSlide, slides);
 	moveSlide(carousel, currentSlide, targetSlide);
 	toggleActive(currentDot, targetDot);
+	time = setInterval(autoMoveSlide, INTERVAL_TIME);
 });
 
-
-
-time = setInterval(function() {
+function autoMoveSlide() {
 	const currentSlide = carousel.querySelector('.active');
 	const currentIndex = findIndex(currentSlide, slides);
 	let targetSlide = null;
@@ -132,18 +137,20 @@ time = setInterval(function() {
 		moveSlide(carousel, currentSlide, targetSlide);
 	} else if (currentIndex === 0) {
 		dir = 'TO_LEFT';
-        targetSlide = currentSlide.nextElementSibling;
-        hideButton(targetSlide, slides);
+		targetSlide = currentSlide.nextElementSibling;
+		hideButton(targetSlide, slides);
 		moveSlide(carousel, currentSlide, targetSlide);
 	} else {
 		if (dir === 'TO_LEFT') {
-            targetSlide = currentSlide.nextElementSibling;
-            hideButton(targetSlide, slides);
+			targetSlide = currentSlide.nextElementSibling;
+			hideButton(targetSlide, slides);
 			moveSlide(carousel, currentSlide, targetSlide);
 		} else if (dir === 'TO_RIGHT') {
-            targetSlide = currentSlide.previousElementSibling;
-            hideButton(targetSlide, slides);
+			targetSlide = currentSlide.previousElementSibling;
+			hideButton(targetSlide, slides);
 			moveSlide(carousel, currentSlide, targetSlide);
 		}
 	}
-}, INTERVAL_TIME);
+}
+
+console.log(time);
