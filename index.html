@@ -8,29 +8,44 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<h1>Carousel JS</h1>
 		<div class="carousel">
-			<button class="btn btn__prev carousel--btn"><img src="" alt="" /></button>
-			<button class="btn btn__next carousel--btn"><img src="" alt="" /></button>
+			<button class="btn carousel--btn carousel--btn__prev">
+				<img class="image" src="./media/images/prev.png" alt="previous arrow" />
+			</button>
+			<button class="btn carousel--btn carousel--btn__next">
+				<img class="image" src="./media/images/next.png" alt="next arrow" />
+			</button>
 
 			<div class="carousel--container">
 				<ul class="carousel--items">
 					<li class="carousel--item active">
-						<img src="./media/images/FX450_OPL_XCntrlPlus_Front.jpeg" alt="Picture of FX range" />
+						<img
+							class="image carousel--image"
+							src="./media/images/FX450_OPL_XCntrlPlus_Front.jpeg"
+							alt="Picture of FX range"
+						/>
 					</li>
 					<li class="carousel--item">
-						<img src="./media/images/FX450_OPL_XCntrlPlus_Left.jpeg" alt="Picture of FX range" />
+						<img
+							class="image carousel--image"
+							src="./media/images/FX450_OPL_XCntrlPlus_Left.jpeg"
+							alt="Picture of FX range"
+						/>
 					</li>
 					<li class="carousel--item">
-						<img src="./media/images/FX450_OPL_XCntrlPlus_Right.jpeg" alt="Picture of FX range" />
+						<img
+							class="image carousel--image"
+							src="./media/images/FX450_OPL_XCntrlPlus_Right.jpeg"
+							alt="Picture of FX range"
+						/>
 					</li>
 				</ul>
 			</div>
 
 			<div class="carousel--navigation">
-				<div class="carusel--dot active"></div>
-				<div class="carusel--dot"></div>
-				<div class="carusel--dot"></div>
+				<div class="carousel--dot active"></div>
+				<div class="carousel--dot"></div>
+				<div class="carousel--dot"></div>
 			</div>
 		</div>
 		<script src="./js/carousel.js"></script>
